@@ -5,7 +5,7 @@ docker build . -f Dockerfile -t postgresql
 ```
 
 ```shell
-docker run --rm -d -u postgres -p 5432:5432 postgresql start
+docker run --rm -d -u postgres -p 5432:5432 postgresql
 ``` 
 
 ```shell

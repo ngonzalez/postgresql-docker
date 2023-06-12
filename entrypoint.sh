@@ -6,7 +6,7 @@ function start_postgresql {
 }
 
 function usage {
-	echo "usage: entrypoint.sh [start]"
+	echo "usage: entrypoint.sh [--server|--help]"
 }
 
 if [ "$1" != "" ]; then
