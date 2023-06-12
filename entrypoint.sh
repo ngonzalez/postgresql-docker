@@ -2,7 +2,7 @@
 set -e
 
 function start_postgresql {
-	/usr/lib/postgresql/$POSTGRESQL_VERSION/bin/postgres "-p" $POSTGRESQL_PORT "-D" "/var/lib/postgresql/$POSTGRESQL_VERSION/data" "-c" "config_file=/etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf" > /dev/null 2>&1
+	su -c '/usr/lib/postgresql/$POSTGRESQL_VERSION/bin/postgres "-p" $POSTGRESQL_PORT "-D" "/var/lib/postgresql/$POSTGRESQL_VERSION/data" "-c" "config_file=/etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf"' $USER
 }
 
 function usage {
@@ -11,12 +11,12 @@ function usage {
 
 if [ "$1" != "" ]; then
 	case $1 in
-		start | start_postgresql )  start_postgresql
-			exit
-			;;
-		-h | --help )               usage
-			exit
-			;;
+		-s | --server )     start_postgresql
+			                exit
+			                ;;
+		-h | --help )       usage
+                			exit
+                			;;
 	esac
 	shift
 fi
